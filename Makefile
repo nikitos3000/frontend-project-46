@@ -2,5 +2,8 @@ install:
 	npm ci
 
 run:
-	node bin/gendiff.js file1.json ./__fixtures__/file2.json
+	node bin/gendiff.js file1.json file2.json
+
+lint:
+	npx eslint .
 
