@@ -1,16 +1,24 @@
+
 import _ from 'lodash';
 import { readFileSync } from 'node:fs' ;
 import  path  from 'node:path' ;
 export default function jsonToObj(filepath1, filepath2){
-    const path1 = path.resolve('__fixtures__', filepath1)
-    const path2 = path.resolve('__fixtures__', filepath2)
-    const data1 = readFileSync(path1,{encoding: 'utf-8'})
-    const data2 = readFileSync(path2,{encoding: 'utf-8'})
+    const path1 = resolvePath(filepath1)
+    const path2 = resolvePath(filepath2)
+
+    const data1 = readFileSync(path1, 'utf-8')
+    const data2 = readFileSync(path2, 'utf-8')
+    
     const parseddata1 = JSON.parse(data1)
     const parseddata2 = JSON.parse(data2)
-    console.log(path.resolve(filepath1))
     const vvv = genDiff(parseddata1, parseddata2)
     console.log(vvv)
+}
+
+function resolvePath (filepath){
+ return filepath.includes('__fixtures__')
+  ? path.resolve(process.cwd(), filepath)
+  : path.resolve(process.cwd(), (`__fixtures__/${filepath}`))
 }
 
 const genDiff = (obj1, obj2) => {

@@ -2,5 +2,5 @@ install:
 	npm ci
 
 run:
-	node bin/gendiff.js filepath1.json filepath2.json
+	node bin/gendiff.js file1.json ./__fixtures__/file2.json
 
