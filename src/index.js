@@ -2,7 +2,7 @@
 import _ from 'lodash';
 import { readFileSync } from 'node:fs' ;
 import  path  from 'node:path' ;
-export default function jsonToObj(filepath1, filepath2){
+export default function showDiff(filepath1, filepath2){
     const path1 = resolvePath(filepath1)
     const path2 = resolvePath(filepath2)
 
@@ -11,8 +11,9 @@ export default function jsonToObj(filepath1, filepath2){
     
     const parseddata1 = JSON.parse(data1)
     const parseddata2 = JSON.parse(data2)
-    const vvv = genDiff(parseddata1, parseddata2)
+    let vvv = genDiff(parseddata1, parseddata2)
     console.log(vvv)
+     return vvv
 }
 
 function resolvePath (filepath){
@@ -29,14 +30,14 @@ const genDiff = (obj1, obj2) => {
     const result = ['{'];
     for (const key of sortedkeys) {
       if (!Object.hasOwn(obj1, key)) {
-        result.push(` + ${key} : ${obj2[key]}`)
+        result.push(`  + ${key}: ${obj2[key]}`)
       } else if (!Object.hasOwn(obj2, key)) {
-        result.push(` - ${key} : ${obj1[key]}`)
+        result.push(`  - ${key}: ${obj1[key]}`)
       } else if (obj1[key] !== obj2[key]) {
-        result.push(` - ${key} : ${obj1[key]}`)
-        result.push(` + ${key} : ${obj2[key]}`)
+        result.push(`  - ${key}: ${obj1[key]}`)
+        result.push(`  + ${key}: ${obj2[key]}`)
       } else {
-        result.push(`   ${key} : ${obj1[key]}`)
+        result.push(`    ${key}: ${obj1[key]}`)
       }
     }
     result.push('}')

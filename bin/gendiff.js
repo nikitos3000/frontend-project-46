@@ -1,5 +1,5 @@
 import { Command } from 'commander';
-import jsonToObj from '../src/index.js';
+import showDiff from '../src/index.js';
 const program = new Command();
 
 program
@@ -10,5 +10,5 @@ program
   .option('-f, --format <type>  output format')
   .argument('<filepath1>')
   .argument('<filepath2>')
-  .action(jsonToObj)
+  .action(showDiff)
 program.parse();
