@@ -1,18 +1,15 @@
 
 import _ from 'lodash';
-import { readFileSync } from 'node:fs' ;
 import  path  from 'node:path' ;
+import parser from './parser.js';
 export default function showDiff(filepath1, filepath2){
     const path1 = resolvePath(filepath1)
     const path2 = resolvePath(filepath2)
 
-    const data1 = readFileSync(path1, 'utf-8')
-    const data2 = readFileSync(path2, 'utf-8')
+    const data1 = parser(path1)
+    const data2 = parser(path2)
     
-    const parseddata1 = JSON.parse(data1)
-    const parseddata2 = JSON.parse(data2)
-    let vvv = genDiff(parseddata1, parseddata2)
-    console.log(vvv)
+    let vvv = genDiff(data1, data2)
      return vvv
 }
 

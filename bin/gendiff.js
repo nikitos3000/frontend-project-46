@@ -10,5 +10,8 @@ program
   .option('-f, --format <type>  output format')
   .argument('<filepath1>')
   .argument('<filepath2>')
-  .action(showDiff)
+  .action((filepath1, filepath2) =>{
+  const result = showDiff(filepath1, filepath2);
+  console.log(result); 
+  })
 program.parse();
