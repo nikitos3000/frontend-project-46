@@ -25,7 +25,7 @@ export default function makeStylish(tree) {
                     case 'added':
                         return `  + ${elem.key}: ${stringify(elem.value)}`;
                     case 'deleted':
-                        return `  - ${elem.key}: ${isObject(elem)? getStrings(elem) : stringify(elem.value) } `
+                        return `  - ${elem.key}: ${stringify(elem.value)} `
                     case 'unchanged':
                         return `    ${elem.key}: ${stringify(elem.value)}`;
                     case 'nested': {
@@ -43,7 +43,7 @@ export default function makeStylish(tree) {
                 case 'added':
                     return `  + ${node.key}: ${stringify(node.value)}`;
                 case 'deleted':
-                    return `  - ${node.key}: ${stringify(node.value)}`
+                    return `  - ${node.key}: ${isObject(node) ? getStrings(node) : stringify(node.value)}`
                 case 'unchanged':
                     return `    ${node.key}: ${stringify(node.value)}`;
                 case 'nested': {
