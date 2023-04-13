@@ -11,3 +11,6 @@ test:
 
 test-coverage:
 	npx jest --coverage --coverageProvider=v8
+
+run2: 
+	node bin/gendiff.js ./__fixtures__/file1copy.json ./__fixtures__/file2copy.json
