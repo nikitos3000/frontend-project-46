@@ -3,7 +3,7 @@ import parser from './parser.js';
 import builtAST from './buildAst.js';
 import formatter from './formatters/index.js';
 
-export default function showDiff(filepath1, filepath2, format) {
+export default function showDiff(filepath1, filepath2, format = 'stylish') {
   const genDiff = (obj1, obj2, formatt) => {
     const AST = builtAST(obj1, obj2);
     return formatter(AST, formatt);
