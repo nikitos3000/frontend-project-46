@@ -10,6 +10,6 @@ export default function formatter(tree, format) {
     case 'json':
       return JSON.stringify(tree);
     default:
-      throw new Error('Введите формат');
+      throw new Error('This format is not supported');
   }
 }

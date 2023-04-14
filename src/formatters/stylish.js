@@ -32,7 +32,7 @@ export default function makeStylish(tree) {
         case 'changed':
           return `${root(depth, 2)}- ${n.key}: ${stringify(n.values[0], depth)}\n${root(depth, 2)}+ ${n.key}: ${stringify(n.values[1], depth)}`;
         default:
-          throw new Error(`ошибка ${n.type}`);
+          throw new Error(`Error ${n.type}`);
       }
     });
   }
