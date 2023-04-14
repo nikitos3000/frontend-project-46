@@ -4,6 +4,9 @@
   "description": "ishet otlichia",
   "main": "src/index.js",
   "type": "module",
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
   "scripts": {
     "test": "npx jest"
   },
