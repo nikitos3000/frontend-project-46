@@ -1,5 +1,5 @@
 import _ from "lodash";
-export default function builtAST(obj1, obj2) {
+ function builtAST(obj1, obj2) {
     const keys1 = Object.keys(obj1);
     const keys2 = Object.keys(obj2);
     const keys = _.union(keys1, keys2);
@@ -41,3 +41,10 @@ export default function builtAST(obj1, obj2) {
 
     return tree;
 }
+
+const getDifferenceTree = (data1, data2) => ({
+    type: 'root',
+    children: builtAST(data1, data2),
+});
+
+export default getDifferenceTree
